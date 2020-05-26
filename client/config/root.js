@@ -14,6 +14,8 @@ import NotFound from '../components/404'
 
 import Startup from './startup'
 
+// import { Link, useParams } from 'react-router-dom'
+
 const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
   const func = (props) =>
     !!rest.user && !!rest.user.name && !!rest.token ? (
@@ -84,6 +86,10 @@ export default (props) => {
           <Switch>
             <Route exact path="/" component={() => <DummyView />} />
             <Route exact path="/dashboard" component={() => <Home />} />
+            {/* new routes added */}
+            <Route exact path="/dashboard/profile/:user" component={() => <Home />} />
+            <Route exact path="/dashboard/main" component={() => <Home />} />
+
             <PrivateRouteConnected exact path="/hidden-route" component={() => <DummyView />} />
             <Route component={() => <NotFound />} />
           </Switch>
